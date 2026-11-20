@@ -1,0 +1,186 @@
+.storefront {
+  background: radial-gradient(ellipse at 77% 25%, #1c3940, #102423 65%);
+}
+
+.opening h1 {
+  max-width: 14ch;
+  font-size: clamp(3rem, 6.2vw, 5.85rem);
+  letter-spacing: -.055em;
+  word-spacing: .04em;
+  line-height: 1;
+}
+
+.opening em { display: block; color: var(--accent); font: italic 1em Georgia, serif; }
+.opening .lead { max-width: 43ch; }
+
+.servis-play { display: inline-block; border-radius: .45rem; }
+.servis-play img { width: 10rem; }
+
+.road-window {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: end center;
+  width: min(100%, 70svh);
+  aspect-ratio: 1.42;
+  justify-self: end;
+  overflow: hidden;
+  border-bottom: .45rem solid #325450;
+  border-radius: 47% 47% .6rem .6rem;
+  background: #9ebebd;
+}
+
+.road-window::before {
+  position: absolute;
+  z-index: -1;
+  inset: 59% 0 0;
+  background: #6e9691;
+  transform: skewY(-7deg) scale(1.25);
+  content: '';
+}
+
+.road-sun {
+  position: absolute;
+  z-index: -1;
+  top: 15%;
+  right: 24%;
+  width: 23%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #f5ddab;
+}
+
+.road-mascot { width: 96%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 5px 0 #324f491f); }
+
+.hero-benefits li { display: block; }
+
+.routine-band, .servis-plan-band {
+  border-block: 1px solid var(--line);
+  background: #142827;
+}
+
+.routine {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 6vw, 5rem);
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.routine .utility-link { margin-top: .55rem; }
+
+.service-ticket {
+  padding: clamp(1rem, 3vw, 1.7rem);
+  border: 1px solid #4e7771;
+  border-radius: 1rem;
+  background: #192e2b;
+}
+
+.service-ticket figcaption { margin: 0 0 .8rem; color: var(--muted); }
+.ticket-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .45rem 1rem; }
+.ticket-heading strong { color: var(--accent); font-size: 1.25rem; }
+.ticket-numbers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+  margin: 1rem 0 0;
+  padding-top: .8rem;
+  border-top: 1px solid #4e7771;
+}
+.ticket-numbers dt { color: var(--muted); font-size: .875rem; }
+.ticket-numbers dd { margin: .2rem 0 0; font-size: 1.05rem; font-weight: 660; }
+
+.servis-features { display: block; }
+.servis-features article { display: block; }
+.servis-features h3 { font-size: 1.1rem; }
+.servis-features p { font-size: 1rem; }
+
+.servis-plan-band .section-heading { justify-items: center; text-align: center; }
+.servis-plans { max-width: 55rem; margin-inline: auto; }
+.servis-plans .servis-plan-term { color: var(--text); font-weight: 650; }
+
+.servis-plan-reference {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .65rem;
+  font-size: .875rem;
+}
+
+.servis-plan-reference s {
+  margin-inline-start: .25rem;
+  color: var(--text);
+  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+  font-weight: 650;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: .1em;
+}
+
+.servis-plan-discount {
+  padding: .18rem .5rem;
+  border: 1px solid #49776a;
+  border-radius: .4rem;
+  background: #183b35;
+  color: var(--accent);
+  font-weight: 680;
+  white-space: nowrap;
+}
+
+.servis-help { max-width: 47rem; }
+.servis-help h2 { margin-bottom: 1.25rem; }
+.servis-help details { border-bottom: 1px solid var(--line); }
+.servis-help summary { padding: .95rem 0; cursor: pointer; font-weight: 650; }
+.servis-help summary::marker { color: var(--accent); }
+.servis-help details p { padding: 0 0 .9rem; color: var(--muted); }
+.servis-help .utility-link { margin-top: .6rem; }
+
+.product-footer .footer-main { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.servis-document li + li { margin-top: .55rem; }
+.guide-reminders { display: grid; gap: .55rem; margin: .9rem 0 0; }
+.guide-reminders > div { padding: .8rem 1rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--surface); }
+.guide-reminders dt { font-weight: 650; }
+.guide-reminders dd { margin: .2rem 0 0; color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .road-mascot { animation: mascot-in 420ms ease-out both; }
+  @keyframes mascot-in { from { opacity: .6; transform: translateY(.45rem); } }
+}
+
+@media (min-width: 64rem) {
+  .opening h1 { max-width: none; font-size: clamp(3.25rem, 5.2vw, 5rem); }
+}
+
+@media (max-width: 50rem) {
+  .counter, .routine { grid-template-columns: 1fr; }
+  .counter { gap: 1.65rem; }
+  .road-window { width: min(100%, 32rem); justify-self: center; }
+  .product-footer .footer-main { grid-template-columns: 1fr; }
+}
+
+
+/* Contextual mascots match the illustrations on the NotaKu website. */
+.feature-mascot {
+  width: min(14rem, 100%);
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.service-highlights, .service-extras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 3rem);
+}
+.service-highlights article {
+  padding: 1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.service-highlights h3 { font-size: 1.2rem; }
+.service-extras { gap: .75rem; margin-top: 2rem; }
+@media (max-width: 44rem) {
+  .service-highlights, .service-extras { grid-template-columns: 1fr; }
+  .service-highlights { gap: 1.75rem; }
+}

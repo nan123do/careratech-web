@@ -1,0 +1,179 @@
+.storefront {
+  background: radial-gradient(ellipse at 77% 25%, #243a36, #102423 65%);
+}
+
+.opening h1 {
+  max-width: 14ch;
+  font-size: clamp(3rem, 6.2vw, 5.85rem);
+  letter-spacing: -.055em;
+  word-spacing: .04em;
+  line-height: 1;
+}
+
+.opening em { display: block; color: var(--accent); font: italic 1em Georgia, serif; }
+.opening .lead { max-width: 43ch; }
+
+.store-badge { display: inline-block; border-radius: .45rem; }
+.store-badge img { width: 10rem; }
+
+.receipt-window {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: end center;
+  width: min(100%, 70svh);
+  aspect-ratio: 1.42;
+  justify-self: end;
+  overflow: hidden;
+  border-bottom: .45rem solid #325450;
+  border-radius: 47% 47% .6rem .6rem;
+  background: #9ebebd;
+}
+
+.receipt-window::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(circle at 74% 33%, #f8ddb0 0 15%, transparent 15.3%),
+    linear-gradient(-8deg, #9fbaa6 0 47%, #c4cabe 47.2%);
+  content: '';
+}
+
+.receipt-window img { width: 96%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 5px 0 #324f491f); }
+
+.hero-benefits li { display: block; }
+
+.claim-band {
+  border-block: 1px solid var(--line);
+  background: #142827;
+}
+
+.claim-story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 6vw, 5rem);
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.claim-story .utility-link { margin-top: .55rem; }
+
+.warranty-slip {
+  padding: clamp(1rem, 3vw, 1.7rem);
+  border: 1px solid #4e7771;
+  border-radius: 1rem;
+  background: #192e2b;
+}
+
+.warranty-slip figcaption { margin: 0 0 .8rem; color: var(--muted); }
+.warranty-item { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .45rem 1rem; }
+.warranty-item span { color: var(--accent); font-weight: 650; }
+.warranty-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+  margin: 1rem 0 0;
+  padding-top: .8rem;
+  border-top: 1px solid #4e7771;
+}
+.warranty-dates dt { color: var(--muted); font-size: .875rem; }
+.warranty-dates dd { margin: .2rem 0 0; font-size: 1.05rem; font-weight: 660; }
+
+.receipt-features { display: block; }
+.receipt-features article { display: block; }
+.receipt-features h3 { font-size: 1.1rem; }
+.receipt-features p { font-size: 1rem; }
+
+.claim-band .section-heading { justify-items: center; text-align: center; }
+.receipt-plans { max-width: 55rem; margin-inline: auto; }
+.receipt-plans ul {
+  display: grid;
+  gap: .4rem;
+  margin: 0;
+  padding-inline-start: 1.15rem;
+  color: var(--muted);
+}
+
+.receipt-plans .premium-term { color: var(--text); font-weight: 650; }
+
+.receipt-plan-reference {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .65rem;
+  font-size: .875rem;
+}
+
+.receipt-plan-reference s {
+  margin-inline-start: .25rem;
+  color: var(--text);
+  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
+  font-weight: 650;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: .1em;
+}
+
+.receipt-plan-discount {
+  padding: .18rem .5rem;
+  border: 1px solid #49776a;
+  border-radius: .4rem;
+  background: #183b35;
+  color: var(--accent);
+  font-weight: 680;
+  white-space: nowrap;
+}
+.warranty-slip .warranty-evidence { margin-top: 1rem; color: var(--muted); }
+
+.receipt-help { max-width: 47rem; }
+.receipt-help h2 { margin-bottom: 1.25rem; }
+.receipt-help details { border-bottom: 1px solid var(--line); }
+.receipt-help summary { padding: .95rem 0; cursor: pointer; font-weight: 650; }
+.receipt-help summary::marker { color: var(--accent); }
+.receipt-help details p { padding: 0 0 .9rem; color: var(--muted); }
+.receipt-help .utility-link { margin-top: .6rem; }
+
+.product-footer .footer-main { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.document li + li { margin-top: .55rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .receipt-window img { animation: mascot-in 420ms ease-out both; }
+  @keyframes mascot-in { from { opacity: .6; transform: translateY(.45rem); } }
+}
+
+@media (min-width: 64rem) {
+  .opening h1 { max-width: none; font-size: clamp(3.25rem, 5.2vw, 5rem); }
+}
+
+@media (max-width: 50rem) {
+  .counter, .claim-story { grid-template-columns: 1fr; }
+  .counter { gap: 1.65rem; }
+  .receipt-window { width: min(100%, 32rem); justify-self: center; }
+  .product-footer .footer-main { grid-template-columns: 1fr; }
+}
+
+
+.feature-mascot {
+  width: min(14rem, 100%);
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.service-highlights, .service-extras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 3rem);
+}
+.service-highlights article {
+  padding: 1rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+.service-highlights h3 { font-size: 1.2rem; }
+.service-extras { gap: .75rem; margin-top: 2rem; }
+@media (max-width: 44rem) {
+  .service-highlights, .service-extras { grid-template-columns: 1fr; }
+  .service-highlights { gap: 1.75rem; }
+}

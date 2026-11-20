@@ -1,0 +1,94 @@
+.guide-price, .receipt-comparison {
+  margin-top: 1.5rem;
+  padding: clamp(.75rem, 3vw, 1.25rem);
+  border: 1px solid var(--line);
+  border-radius: .8rem;
+  background: var(--surface);
+}
+
+.guide-price h3, .receipt-comparison h3 { font-size: 1.15rem; text-wrap: wrap; }
+.guide-price p, .receipt-comparison h3 + p { color: var(--muted); }
+.receipt-comparison h3 + p { margin: .45rem 0 .9rem; }
+
+.guide-rates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin: .85rem 0 0;
+}
+
+.guide-rates > div {
+  padding: .55rem .65rem;
+  border-radius: .5rem;
+  background: var(--surface-raised);
+}
+
+.guide-rates dt { color: var(--muted); font-size: .875rem; }
+.guide-rates dd { margin: .15rem 0 0; font-size: clamp(1rem, 2.5vw, 1.35rem); font-weight: 650; }
+
+.receipt-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(.5rem, 2vw, 1.1rem);
+}
+
+.receipt-example figcaption {
+  margin: 0 0 .4rem;
+  color: var(--text);
+  font-size: .875rem;
+  font-weight: 650;
+}
+
+.receipt-paper {
+  padding: clamp(.56rem, 1.4vw, 1rem);
+  border-radius: .32rem;
+  background: #f4efe2;
+  color: #24342e;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+.receipt-paper .receipt-store {
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .3rem .45rem;
+  font-weight: 710;
+}
+
+.receipt-store-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: 1.45rem;
+  block-size: 1.45rem;
+  border-radius: .3rem;
+  background: #24574b;
+  color: #f4efe2;
+  font-size: .75rem;
+}
+
+.receipt-paper .receipt-item { margin-block: .5rem .45rem; color: #4e5c53; }
+.receipt-paper .receipt-total {
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: .3rem;
+  padding-top: .4rem;
+  border-top: 1px dashed #839187;
+}
+
+.receipt-paper .receipt-watermark {
+  margin-top: .55rem;
+  padding: .25rem .35rem;
+  border-radius: .2rem;
+  background: #dce7de;
+  color: #23483d;
+  font-size: .75rem;
+  font-weight: 650;
+  text-align: center;
+}
+
