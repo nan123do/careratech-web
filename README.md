@@ -8,7 +8,7 @@ Lima situs publik statis dalam satu folder. Carera Tech memperkenalkan produk, N
 | --- | --- |
 | `careratech/` | Beranda dan daftar produk Carera Tech |
 | `notaku/` | Beranda NotaKu, privasi, dan ketentuan |
-| `notakita/` | Beranda, panduan paket, kebijakan privasi, dan ketentuan pembelian NOTAKITA |
+| `notakita/` | Beranda, tutorial, panduan paket, kebijakan privasi, dan ketentuan pembelian NOTAKITA |
 | `serviskita/` | Beranda dan panduan ServisKita |
 | `receipt_keeper/` | Beranda dan panduan Receipt Keeper |
 | `shared/` | Tema dan halaman 404 bersama |
@@ -30,7 +30,7 @@ node scripts/build.mjs --serve
 - ServisKita di `http://127.0.0.1:4176/`
 - Receipt Keeper di `http://127.0.0.1:4177/`
 
-Jalankan ulang setelah mengubah source. Gunakan `node scripts/build.mjs` jika hanya perlu build lokal.
+Jalankan ulang setelah mengubah source. Gunakan `node scripts/build.mjs` jika hanya perlu build lokal. Tutorial NotaKita tersedia di `/tutorial/`. Tambahkan atau ubah artikel pada `scripts/notakita-tutorial.txt` dan simpan tangkapan layar data contoh di `notakita/assets/tutorial/`. Build membuat halaman statis untuk tiap kategori dan artikel, serta indeks pencariannya. Pemilih Ponsel dan Tablet berlaku di seluruh tutorial. Catat tangkapan layar kedua perangkat pada baris `@` di katalog. Pakai kolom langkah tablet ketika alurnya berbeda. Untuk artikel yang memerlukan gambar per langkah, gunakan `scripts/notakita-tutorial-walkthroughs.json`.
 
 ## Penerbitan
 

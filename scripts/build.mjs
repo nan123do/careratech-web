@@ -2,6 +2,7 @@ import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { basename, extname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildNotakitaTutorial } from './notakita-tutorial.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = resolve(root, 'dist');
@@ -133,6 +134,7 @@ for (const site of Object.keys(sites)) {
     await cp(resolve(catalogAssets, 'google-play-id.webp'), resolve(output, 'assets/google-play-id.webp'));
   }
   if (site === 'notakita') {
+    await buildNotakitaTutorial(output);
     await cp(resolve(root, 'careratech/assets/notakita-full.webp'), resolve(output, 'assets/app-icon.webp'));
     await cp(resolve(root, 'careratech/assets/notakita-kelola-cabang.webp'), resolve(output, 'assets/maskot-cabang.webp'));
     await cp(resolve(root, 'notaku/assets/fitur-icons.webp'), resolve(output, 'assets/fitur-icons.webp'));
@@ -153,8 +155,11 @@ for (const site of Object.keys(sites)) {
 const contentTypes = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
+  '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 };
 
 function startPreview(site, port) {
