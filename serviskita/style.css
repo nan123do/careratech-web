@@ -96,36 +96,6 @@
 .servis-features p { font-size: 1rem; }
 
 .servis-plan-band .section-heading { justify-items: center; text-align: center; }
-.servis-plans { max-width: 55rem; margin-inline: auto; }
-.servis-plans .servis-plan-term { color: var(--text); font-weight: 650; }
-
-.servis-plan-reference {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .35rem .65rem;
-  font-size: .875rem;
-}
-
-.servis-plan-reference s {
-  margin-inline-start: .25rem;
-  color: var(--text);
-  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
-  font-weight: 650;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: .1em;
-}
-
-.servis-plan-discount {
-  padding: .18rem .5rem;
-  border: 1px solid #49776a;
-  border-radius: .4rem;
-  background: #183b35;
-  color: var(--accent);
-  font-weight: 680;
-  white-space: nowrap;
-}
-
 .servis-help { max-width: 47rem; }
 .servis-help h2 { margin-bottom: 1.25rem; }
 .servis-help details { border-bottom: 1px solid var(--line); }

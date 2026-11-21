@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="assets/product-site.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="atas">
 <a class="skip" href="#utama">Lewati ke konten</a>
-<header class="site-header" id="atas" tabindex="-1">
+<header class="site-header">
   <nav class="container site-nav" aria-label="Navigasi utama">
     <a class="brand" href="./" aria-current="page"><img class="app-icon" src="assets/app-icon.webp" width="36" height="36" alt="">Receipt Keeper</a>
     <div class="nav-links">
       <a href="#fitur">Fitur</a><a href="#paket">Paket</a><a href="./panduan/">Panduan</a><a href="#bantuan">Bantuan</a>
     </div>
+    <!-- catalog-nav -->
   </nav>
 </header>
 <main id="utama" tabindex="-1">
@@ -97,31 +98,37 @@
   <section class="claim-band" id="paket" aria-labelledby="judul-paket">
     <div class="container section">
       <div class="section-heading"><h2 id="judul-paket">Paket Receipt Keeper</h2></div>
-      <div class="product-list receipt-plans">
+      <div class="product-list plan-comparison plan-comparison-stacked">
         <article class="plan" aria-labelledby="judul-gratis">
-          <h3 id="judul-gratis">Gratis</h3><p class="price">Rp0</p>
-          <ul>
-            <li>Simpan hingga <strong>20 struk</strong></li>
-            <li>Baca struk otomatis hingga <strong>10 kali per bulan</strong></li>
-            <li>Catat garansi, tandai favorit, dan ekspor struk</li>
-          </ul>
+          <h3 id="judul-gratis">Gratis</h3>
+          <p class="price">Rp0</p>
+          <div class="plan-summary">
+            <p>Simpan hingga <strong>20 struk</strong>.</p>
+            <ul>
+              <li>Baca struk otomatis hingga <strong>10 kali per bulan</strong></li>
+              <li>Catat garansi, tandai favorit, dan ekspor struk</li>
+            </ul>
+          </div>
         </article>
         <article class="plan plan-starter" aria-labelledby="judul-premium">
           <h3 id="judul-premium">Premium Lifetime</h3>
           <p class="price">Rp49.000</p>
-          <p class="receipt-plan-reference">
-            <span>Harga normal <s>Rp100.000</s></span>
-            <span class="receipt-plan-discount">Hemat 51%</span>
-          </p>
-          <p class="premium-term">Bayar sekali, aktif selamanya.</p>
-          <ul>
-            <li>Simpan struk dan gunakan OCR tanpa batas kuota</li>
-            <li>Nyalakan pengingat garansi per barang</li>
-            <li>Pulihkan pembelian dengan akun Google Play yang sama</li>
-          </ul>
-          <p>Buka menu <strong>Premium</strong> di Receipt Keeper. Harga akhir ditampilkan di Google Play sebelum kamu membayar.</p>
+          <div class="plan-summary">
+            <p>Simpan <strong>struk tanpa batas</strong>.</p>
+            <p class="plan-term">Bayar sekali, aktif selamanya.</p>
+            <p class="plan-reference">
+              <span>Harga normal <s>Rp100.000</s></span>
+              <span class="plan-discount">Hemat 51%</span>
+            </p>
+            <ul>
+              <li>Baca struk otomatis tanpa batas kuota</li>
+              <li>Nyalakan pengingat garansi per barang</li>
+              <li>Pulihkan pembelian dengan akun Google Play yang sama</li>
+            </ul>
+          </div>
         </article>
       </div>
+      <p class="plan-note">Untuk membeli Premium, buka menu <strong>Premium</strong> di Receipt Keeper. Harga akhir ditampilkan di Google Play sebelum kamu membayar.</p>
     </div>
   </section>
 

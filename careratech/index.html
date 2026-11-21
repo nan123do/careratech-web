@@ -24,7 +24,10 @@
   </header>
   <main id="utama" tabindex="-1">
     <section class="hero" id="showcase" aria-label="Sorotan aplikasi">
-      <div class="container hero-content">
+      <div class="container showcase-switcher">
+        <div class="selector" role="group" aria-label="Pilih aplikasi untuk ditampilkan" hidden></div>
+      </div>
+      <div class="container hero-content" id="sorotan-aplikasi">
         <div class="slide-copy">
           <p class="slide-label"><img src="assets/notaku-brand.webp" width="38" height="38" alt=""><span>NotaKu</span><small>Kasir gratis · Offline</small></p>
           <h1>Catat jualan, meski offline.</h1>
@@ -39,7 +42,6 @@
           <div class="prop"></div>
         </figure>
       </div>
-      <div class="container selector" role="group" aria-label="Pilih aplikasi untuk ditampilkan" hidden></div>
     </section>
 
     <section class="container catalog section" id="produk" aria-labelledby="judul-produk">
@@ -59,33 +61,84 @@
         <div class="description">
           <h4>Berapa hasil jualan hari ini?</h4>
           <p>Catat penjualan tunai atau tempo meski toko sedang tanpa internet. Setelah toko tutup, kamu bisa melihat omzet, sisa stok, dan piutang pelanggan.</p>
-          <details><summary>Fitur NotaKu</summary><ul>
-            <li>Jual barang dan jasa, lalu cetak nota pada printer termal 58 atau 80 mm.</li>
-            <li>Telusuri barang masuk dan keluar lewat kartu stok, lalu cocokkan jumlahnya saat stok opname.</li>
-            <li>Bagikan laporan dalam PDF atau Excel. Cadangkan data di perangkat atau Google Drive.</li>
-          </ul></details>
+          <ul class="entry-highlights">
+            <li>Jualan tanpa internet</li>
+            <li>Cetak nota 58 atau 80 mm</li>
+            <li>Laporan PDF &amp; Excel</li>
+          </ul>
         </div>
         <div class="entry-links">
           <a class="button play-badge" href="https://play.google.com/store/apps/details?id=com.careratech.notaku&amp;hl=id" aria-label="Buka NotaKu di Google Play"><img src="assets/google-play-id.webp" alt="" width="646" height="250"></a>
           <a class="utility-link" href="{{notaku}}">Website NotaKu</a>
         </div>
+        <details class="entry-details">
+          <summary>Lihat semua fitur NotaKu</summary>
+          <div class="entry-feature-groups">
+            <section><h4>Transaksi &amp; nota</h4><ul>
+              <li>Jual barang, menu, dan jasa. Catat pembelian, transaksi tunai atau tempo, serta retur.</li>
+              <li>Atur logo dan isi nota, lalu cetak dengan printer termal atau bagikan nota digital.</li>
+            </ul></section>
+            <section><h4>Barang &amp; stok</h4><ul>
+              <li>Kelola kategori, satuan, harga, barcode, dan data barang.</li>
+              <li>Catat perubahan stok, cocokkan jumlah dengan stok fisik, dan telusuri riwayat di Kartu Stok.</li>
+            </ul></section>
+            <section><h4>Kas &amp; tagihan</h4><ul>
+              <li>Catat pemasukan dan pengeluaran, serta pindahkan dana antar kas, bank, dan e-wallet.</li>
+              <li>Simpan kontak pelanggan dan pemasok, pantau utang dan piutang, lalu catat pembayarannya.</li>
+            </ul></section>
+            <section><h4>Laporan &amp; cadangan</h4><ul>
+              <li>Periksa omzet, barang terlaris, nilai persediaan, serta laba rugi. Bagikan laporan PDF atau Excel yang tersedia.</li>
+              <li>Cadangkan dan pulihkan data dari penyimpanan perangkat atau Google Drive.</li>
+            </ul></section>
+          </div>
+        </details>
       </article>
 
       <article class="entry" id="notakita" data-showcase-order="2" data-icon="assets/notakita-full.webp" data-title="Kelola tim dan cabang." data-summary="Kasir untuk beberapa pengguna dan cabang, dengan mode tablet dan paket Starter per cabang." data-cover="assets/notakita-kelola-cabang.webp" data-alt="Maskot Carera Tech memegang tablet dan menunjuk dua cabang toko dengan kanopi yang sama.">
         <div class="identity">
           <img src="assets/notakita-full.webp" width="54" height="54" alt="">
-          <div><h3>NotaKita</h3><p>Sedang kami kembangkan</p></div>
+          <div><h3>NotaKita</h3><p>Kasir untuk tim dan cabang</p></div>
         </div>
         <div class="description">
           <h4>Satu tim, satu atau beberapa cabang</h4>
           <p>Kelola akses pengguna dan operasional cabang dari ponsel atau mode tablet. Paket Starter berbayar tersedia per cabang.</p>
-          <details><summary>Fitur NotaKita</summary><ul>
-            <li>Lihat riwayat perubahan stok tiap barang lewat kartu stok.</li>
-            <li>Periksa laporan penjualan per periode dan ekspor ke PDF atau Excel.</li>
-            <li>Lihat status paket tiap cabang dan masa aktif Starter.</li>
-          </ul></details>
+          <ul class="entry-highlights">
+            <li>Hak akses staf</li>
+            <li>Stok antar cabang</li>
+            <li>Mode Kafe &amp; meja</li>
+          </ul>
         </div>
         <div class="entry-links"><a class="button" href="{{notakita}}">Kenali NotaKita</a></div>
+        <details class="entry-details">
+          <summary>Lihat semua fitur NotaKita</summary>
+          <div class="entry-feature-groups">
+            <section><h4>Transaksi &amp; pesanan</h4><ul>
+              <li>Catat penjualan dan pembelian tunai atau tempo, atur diskon, kelola pelanggan dan pemasok, dan proses retur.</li>
+              <li>Simpan pesanan, <a href="{{notakita}}tutorial/penjualan/uang-muka-pesanan/">catat uang muka</a>, lalu cetak atau bagikan nota.</li>
+            </ul></section>
+            <section><h4>Barang &amp; stok</h4><ul>
+              <li>Kelola barang dan jasa, pindai barcode, pakai Multi Satuan dan Multi Harga, atau impor barang dari Excel.</li>
+              <li>Cek stok fisik, kelola barang titipan, dan <a href="{{notakita}}tutorial/barang-stok/kirim-stok/">kirim stok ke cabang lain</a>.</li>
+            </ul></section>
+            <section><h4>Mode Kafe</h4><ul>
+              <li>Kelola bahan, menu, dan resep. Pilih makan di tempat, bawa pulang, atau pesan antar.</li>
+              <li><a href="{{notakita}}tutorial/mode-kafe/tambah-meja/">Tambahkan meja</a>, pindahkan pesanan, dan tandai meja bersih.</li>
+            </ul></section>
+            <section><h4>Kas &amp; tagihan</h4><ul>
+              <li>Kelola akun kas dan bank, catat pemasukan serta pengeluaran, lalu pantau dan bayar tagihan.</li>
+              <li><a href="{{notakita}}tutorial/kas-keuangan/mulai-sesi-kasir/">Mulai Sesi Kasir</a> dan cocokkan saldo dengan uang tunai saat sesi ditutup.</li>
+            </ul></section>
+            <section><h4>Laporan</h4><ul>
+              <li>Lihat ringkasan nota, barang terlaris, pembelian per barang, dan Kartu Stok.</li>
+              <li>Baca arus kas serta <a href="{{notakita}}tutorial/laporan/laba-rugi/">Laba Rugi</a>, dan ekspor laporan yang mendukung PDF atau Excel.</li>
+            </ul></section>
+            <section><h4>Tim &amp; cabang</h4><ul>
+              <li>Dengan Starter, <a href="{{notakita}}tutorial/cabang-tim-perangkat/tambah-staf/">tambahkan staf</a>, atur hak akses, dan kelola perangkat serta loket cabang.</li>
+              <li>Gunakan NotaKita di ponsel atau tablet dan sinkronkan data antarperangkat pada cabang Starter.</li>
+            </ul></section>
+          </div>
+          <a class="utility-link" href="{{notakita}}tutorial/">Buka Tutorial NotaKita</a>
+        </details>
       </article>
 
       <article class="entry" id="serviskita" data-title="Kapan waktunya servis lagi?" data-summary="Lihat riwayat tiap kendaraan dan pasang pengingat servis berdasarkan tanggal atau kilometer." data-cover="assets/serviskita-cek-kilometer.webp" data-alt="Maskot Carera Tech memegang ponsel sambil menunjuk odometer skuter.">
@@ -96,16 +149,37 @@
         <div class="description">
           <h4>Kapan terakhir ganti oli?</h4>
           <p>Simpan riwayat perawatan untuk tiap motor atau mobil. Saat waktunya kembali ke bengkel, cek catatan servis terakhir dan biaya yang sudah dikeluarkan.</p>
-          <details><summary>Fitur ServisKita</summary><ul>
-            <li>Atur pengingat sesuai tanggal atau jarak tempuh kendaraan.</li>
-            <li>Perbarui angka odometer agar jadwal berbasis kilometer mengikuti pemakaian.</li>
-            <li>Simpan foto nota bengkel bersama catatan servis agar mudah dicari lagi.</li>
-          </ul></details>
+          <ul class="entry-highlights">
+            <li>Riwayat servis per kendaraan</li>
+            <li>Pengingat tanggal atau kilometer</li>
+            <li>Foto nota bengkel</li>
+          </ul>
         </div>
         <div class="entry-links">
           <a class="button play-badge" href="https://play.google.com/store/apps/details?id=com.careratech.serviskita&amp;hl=id" aria-label="Buka ServisKita di Google Play"><img src="assets/google-play-id.webp" alt="" width="646" height="250"></a>
           <!-- product-site-link: serviskita -->
         </div>
+        <details class="entry-details">
+          <summary>Lihat semua fitur ServisKita</summary>
+          <div class="entry-feature-groups">
+            <section><h4>Kendaraan &amp; odometer</h4><ul>
+              <li>Simpan profil motor atau mobil dan catat perubahan angka odometer.</li>
+              <li>Kelola satu kendaraan aktif di paket Gratis atau kendaraan tanpa batas di Premium.</li>
+            </ul></section>
+            <section><h4>Riwayat servis &amp; biaya</h4><ul>
+              <li>Catat tanggal, kilometer, jenis pekerjaan, dan biaya setiap kali servis.</li>
+              <li>Simpan foto nota bengkel dan lihat riwayat serta ringkasan biaya per kendaraan.</li>
+            </ul></section>
+            <section><h4>Pengingat</h4><ul>
+              <li>Atur jadwal berdasarkan tanggal, kilometer, atau keduanya.</li>
+              <li>Gunakan pengingat berulang untuk perawatan rutin seperti ganti oli.</li>
+            </ul></section>
+            <section><h4>Ekspor &amp; cadangan</h4><ul>
+              <li>Ekspor catatan servis atau ringkasan biaya ke PDF saat tersedia.</li>
+              <li>Simpan berkas cadangan dan pulihkan data saat ganti HP.</li>
+            </ul></section>
+          </div>
+        </details>
       </article>
 
       <article class="entry" id="receipt-keeper" data-title="Simpan struk, pantau garansi." data-summary="Foto struk belanja agar bukti pembelian mudah ditemukan saat klaim garansi." data-cover="assets/receipt-keeper-foto-struk.webp" data-alt="Maskot Carera Tech memotret struk pembelian di samping ketel dan kardusnya.">
@@ -116,16 +190,37 @@
         <div class="description">
           <h4>Masih ada struk untuk klaim garansi?</h4>
           <p>Foto struk setelah belanja dan tandai barang yang bergaransi. Saat perlu mengajukan klaim, buka bukti pembelian dan ekspor salinannya sebagai PDF.</p>
-          <details><summary>Fitur Receipt Keeper</summary><ul>
-            <li>Ambil gambar dari kamera atau galeri. Periksa hasil pembacaan teks otomatis sebelum menyimpan.</li>
-            <li>Lihat barang yang garansinya masih aktif, hampir habis, atau sudah berakhir.</li>
-            <li>Cadangkan arsip ke folder pilihanmu. Pengingat garansi tersedia di paket Premium.</li>
-          </ul></details>
+          <ul class="entry-highlights">
+            <li>Baca struk dari foto</li>
+            <li>Catat garansi per barang</li>
+            <li>Bagikan bukti belanja ke PDF</li>
+          </ul>
         </div>
         <div class="entry-links">
           <a class="button play-badge" href="https://play.google.com/store/apps/details?id=com.careratech.receipt_keeper&amp;hl=id" aria-label="Buka Receipt Keeper di Google Play"><img src="assets/google-play-id.webp" alt="" width="646" height="250"></a>
           <!-- product-site-link: receipt_keeper -->
         </div>
+        <details class="entry-details">
+          <summary>Lihat semua fitur Receipt Keeper</summary>
+          <div class="entry-feature-groups">
+            <section><h4>Foto &amp; catat struk</h4><ul>
+              <li>Ambil foto dari kamera atau galeri dan baca teks struk secara otomatis.</li>
+              <li>Periksa dan perbaiki hasil sebelum menyimpan, atau masukkan data struk secara manual.</li>
+            </ul></section>
+            <section><h4>Temukan struk kembali</h4><ul>
+              <li>Lihat daftar struk dan buka rincian barang dari setiap pembelian.</li>
+              <li>Tandai struk penting sebagai favorit dan tampilkan favorit saja saat dibutuhkan.</li>
+            </ul></section>
+            <section><h4>Garansi</h4><ul>
+              <li>Catat masa garansi tiap barang dan cek mana yang aktif, hampir habis, atau berakhir.</li>
+              <li>Pengguna Premium bisa menyalakan pengingat garansi per barang.</li>
+            </ul></section>
+            <section><h4>PDF &amp; cadangan</h4><ul>
+              <li>Bagikan salinan struk dalam PDF untuk klaim atau arsip.</li>
+              <li>Cadangkan arsip ke folder pilihan dan pulihkan data saat ganti HP.</li>
+            </ul></section>
+          </div>
+        </details>
       </article>
     </section>
 

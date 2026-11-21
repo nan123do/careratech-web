@@ -86,43 +86,6 @@
 .receipt-features p { font-size: 1rem; }
 
 .claim-band .section-heading { justify-items: center; text-align: center; }
-.receipt-plans { max-width: 55rem; margin-inline: auto; }
-.receipt-plans ul {
-  display: grid;
-  gap: .4rem;
-  margin: 0;
-  padding-inline-start: 1.15rem;
-  color: var(--muted);
-}
-
-.receipt-plans .premium-term { color: var(--text); font-weight: 650; }
-
-.receipt-plan-reference {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .35rem .65rem;
-  font-size: .875rem;
-}
-
-.receipt-plan-reference s {
-  margin-inline-start: .25rem;
-  color: var(--text);
-  font-size: clamp(1.25rem, 2.25vw, 1.5rem);
-  font-weight: 650;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: .1em;
-}
-
-.receipt-plan-discount {
-  padding: .18rem .5rem;
-  border: 1px solid #49776a;
-  border-radius: .4rem;
-  background: #183b35;
-  color: var(--accent);
-  font-weight: 680;
-  white-space: nowrap;
-}
 .warranty-slip .warranty-evidence { margin-top: 1rem; color: var(--muted); }
 
 .receipt-help { max-width: 47rem; }

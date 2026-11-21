@@ -8,8 +8,8 @@
 
 .tutorial-sidebar {
   position: sticky;
-  top: 1rem;
-  max-height: calc(100dvh - 2rem);
+  top: calc(var(--site-header-height) + 1rem);
+  max-height: calc(100dvh - var(--site-header-height) - 2rem);
   padding-inline-end: 1rem;
   overflow: auto;
   scrollbar-width: thin;

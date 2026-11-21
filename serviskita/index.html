@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="assets/product-site.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="atas">
 <a class="skip" href="#utama">Lewati ke konten</a>
-<header class="site-header" id="atas" tabindex="-1">
+<header class="site-header">
   <nav class="container site-nav" aria-label="Navigasi utama">
     <a class="brand" href="./" aria-current="page"><img class="app-icon" src="assets/app-icon.webp" width="36" height="36" alt="">ServisKita</a>
     <div class="nav-links">
       <a href="#fitur">Fitur</a><a href="#paket">Paket</a><a href="./panduan/">Panduan</a><a href="#bantuan">Bantuan</a>
     </div>
+    <!-- catalog-nav -->
   </nav>
 </header>
 <main id="utama" tabindex="-1">
@@ -85,23 +86,29 @@
   <section class="servis-plan-band" id="paket" aria-labelledby="judul-paket">
     <div class="container section">
       <div class="section-heading"><h2 id="judul-paket">Mulai dari satu kendaraan</h2></div>
-      <div class="product-list servis-plans">
-        <article class="plan">
-          <h3>Gratis</h3>
+      <div class="product-list plan-comparison plan-comparison-stacked">
+        <article class="plan" aria-labelledby="judul-gratis">
+          <h3 id="judul-gratis">Gratis</h3>
           <p class="price">Rp0</p>
-          <p>Catat servis, atur pengingat, dan cek biaya untuk satu kendaraan aktif.</p>
+          <div class="plan-summary">
+            <p><strong>1 kendaraan aktif</strong></p>
+            <p>Catat servis, atur pengingat, dan cek biaya.</p>
+          </div>
         </article>
-        <article class="plan plan-starter">
-          <h3>Premium</h3>
+        <article class="plan plan-starter" aria-labelledby="judul-premium">
+          <h3 id="judul-premium">Premium</h3>
           <p class="price">Rp49.000</p>
-          <p class="servis-plan-reference">
-            <span>Harga normal <s>Rp100.000</s></span>
-            <span class="servis-plan-discount">Hemat 51%</span>
-          </p>
-          <p class="servis-plan-term">Bayar sekali, aktif selamanya.</p>
-          <p>Kelola kendaraan tanpa batas. Buka <strong>Pengaturan → Tentang Premium</strong> di ServisKita. Harga akhir ditampilkan di Google Play sebelum kamu membayar.</p>
+          <div class="plan-summary">
+            <p><strong>Kendaraan tanpa batas</strong></p>
+            <p class="plan-term">Bayar sekali, aktif selamanya.</p>
+            <p class="plan-reference">
+              <span>Harga normal <s>Rp100.000</s></span>
+              <span class="plan-discount">Hemat 51%</span>
+            </p>
+          </div>
         </article>
       </div>
+      <p class="plan-note">Untuk membeli Premium, buka <strong>Pengaturan → Tentang Premium</strong> di ServisKita. Harga akhir ditampilkan di Google Play sebelum kamu membayar.</p>
     </div>
   </section>
 

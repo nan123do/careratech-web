@@ -336,6 +336,7 @@ function renderPage({ title, description, breadcrumb, currentPath, sections, con
       <a href="/tutorial/" aria-current="page">Tutorial</a>
       <a href="/#bantuan">Bantuan</a>
     </div>
+    <!-- catalog-nav -->
   </nav>
 </header>
 <div class="container tutorial-layout">

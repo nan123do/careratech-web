@@ -19,7 +19,18 @@
   const buttons = slides.map((slide, index) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = slide.name;
+    button.setAttribute('aria-controls', 'sorotan-aplikasi');
+    if (slide.icon) {
+      const icon = document.createElement('img');
+      icon.src = slide.icon;
+      icon.alt = '';
+      icon.width = 24;
+      icon.height = 24;
+      button.append(icon);
+    }
+    const label = document.createElement('span');
+    label.textContent = slide.name;
+    button.append(label);
     button.addEventListener('click', () => show(index));
     selector.append(button);
     return button;
@@ -68,10 +79,6 @@
     const template = entry.querySelector('template');
     if (template) prop.append(template.content.cloneNode(true));
     buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === current)));
-    const rect = buttons[current].getBoundingClientRect();
-    const bounds = selector.getBoundingClientRect();
-    if (rect.right > bounds.right) selector.scrollLeft += rect.right - bounds.right;
-    if (rect.left < bounds.left) selector.scrollLeft -= bounds.left - rect.left;
   }
 
   selector.addEventListener('keydown', event => {

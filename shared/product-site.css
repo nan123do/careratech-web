@@ -106,6 +106,88 @@
   .feature-directory article:hover { transform: translateY(-.15rem); }
 }
 
+.product-list.plan-comparison {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 56rem;
+  gap: clamp(.65rem, 2vw, 1.5rem);
+  margin-inline: auto;
+}
+
+.plan-comparison .plan {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  align-items: start;
+  min-width: 0;
+  padding: clamp(1rem, 2.6vw, 1.8rem);
+}
+
+@supports (grid-template-rows: subgrid) {
+  .plan-comparison .plan {
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+  }
+}
+
+.plan-comparison h3 { font-size: clamp(1.06rem, 3.4vw, 1.45rem); }
+.plan-intro p { margin-top: .35rem; }
+.plan-prices { display: grid; align-content: start; gap: .3rem; }
+.plan-summary { display: grid; gap: .35rem; }
+.plan-prices .price { display: flex; align-items: baseline; flex-wrap: wrap; gap: .2rem .45rem; }
+.plan-prices .price span { color: var(--muted); font-size: 1rem; font-weight: 500; letter-spacing: normal; }
+.plan p.plan-term { color: var(--text); font-weight: 650; }
+
+.plan-reference {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem .65rem;
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+.plan-reference s {
+  color: var(--text);
+  font-size: 1.15em;
+  font-weight: 650;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: .1em;
+}
+
+.plan-discount {
+  padding: .18rem .5rem;
+  border: 1px solid #49776a;
+  border-radius: .4rem;
+  background: #183b35;
+  color: var(--accent);
+  font-weight: 680;
+  white-space: nowrap;
+}
+
+.plan-summary ul { display: grid; gap: .35rem; margin: .4rem 0 0; padding-inline-start: 1.15em; color: var(--muted); }
+.plan-summary li::marker { color: var(--accent); }
+.plan-note { max-width: 56rem; margin: 1rem auto 0; color: var(--muted); }
+
+@media (max-width: 43.99rem) {
+  .plan-comparison .plan {
+    padding: clamp(.7rem, 3vw, 1.15rem);
+    font-size: .875rem;
+    line-height: 1.45;
+  }
+
+  .plan-comparison .price { font-size: clamp(1.35rem, 5.5vw, 2.25rem); }
+  .plan-comparison .price span, .plan-reference { font-size: .8125rem; }
+  .product-list.plan-comparison-stacked { grid-template-columns: 1fr; max-width: 30rem; }
+  .plan-comparison-stacked .plan {
+    grid-row: auto;
+    grid-template-rows: auto;
+    padding: 1.15rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .plan-comparison-stacked h3 { font-size: 1.35rem; }
+  .plan-comparison-stacked .price { font-size: 2.25rem; }
+}
+
 .product-footer {
   padding-top: clamp(1.75rem, 4vw, 2.75rem);
   padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));

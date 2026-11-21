@@ -70,6 +70,10 @@ const linkToAccountDeletion = portal
   : '';
 
 const showcaseScript = await readFile(resolve(root, 'scripts/showcase.js'), 'utf8');
+const catalogLink = `<a class="catalog-nav" href="${origins.careratech}/#produk" aria-label="Semua aplikasi Carera Tech">
+      <img src="/assets/careratech-mark.webp" width="22" height="22" alt="">
+      <span class="catalog-nav-full">Semua aplikasi</span><span class="catalog-nav-short">Aplikasi</span>
+    </a>`;
 
 async function preparePages(site, output) {
   const files = await readdir(output, { recursive: true, withFileTypes: true });
@@ -85,6 +89,8 @@ async function preparePages(site, output) {
     const html = await readFile(path, 'utf8');
     const rendered = html
       .replace('<!-- canonical -->', canonical)
+      .replace('<!-- catalog-nav -->', catalogLink)
+      .replace('</body>', '<script src="/assets/site-nav.js" defer></script>\n</body>')
       .replace('<!-- showcase-script -->', () => '<script>' + showcaseScript + '</script>')
       .replace('<!-- portal-link -->', linkToPortal)
       .replace('<!-- account-deletion-link -->', linkToAccountDeletion)
@@ -120,8 +126,10 @@ for (const site of Object.keys(sites)) {
   });
   await mkdir(resolve(output, 'assets'), { recursive: true });
   await cp(resolve(root, 'shared/site.css'), resolve(output, 'assets/site.css'));
+  await cp(resolve(root, 'shared/site-nav.js'), resolve(output, 'assets/site-nav.js'));
   if (site !== 'careratech') {
     await cp(resolve(root, 'shared/product-site.css'), resolve(output, 'assets/product-site.css'));
+    await cp(resolve(root, 'careratech/assets/careratech-mark.webp'), resolve(output, 'assets/careratech-mark.webp'));
   }
   const product = optionalProductSites.find(entry => entry.id === site);
   if (site === 'notakita' || product) {

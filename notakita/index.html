@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="assets/product-site.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="atas">
 <a class="skip" href="#utama">Lewati ke konten</a>
-<header class="site-header" id="atas" tabindex="-1">
+<header class="site-header">
   <nav class="container site-nav" aria-label="Navigasi utama">
     <a class="brand" href="./" aria-current="page"><img src="assets/logo.svg" width="139" height="28" alt="NotaKita"></a>
     <div class="nav-links">
@@ -23,6 +23,7 @@
       <a href="./tutorial/">Tutorial</a>
       <a href="#bantuan">Bantuan</a>
     </div>
+    <!-- catalog-nav -->
   </nav>
 </header>
 <main id="utama" tabindex="-1">
@@ -130,27 +131,24 @@
     <div class="container section">
       <div class="section-heading">
         <h2 id="judul-paket">Paket dan harga</h2>
-        <p>Pilih paket untuk mengelola sendiri di Cabang Utama atau bekerja bersama tim di satu atau beberapa cabang.</p>
       </div>
-      <fieldset class="period-switch" hidden>
-        <legend>Periode paket Starter</legend>
-        <input id="periode-bulanan" type="radio" name="periode-starter" value="bulanan" aria-controls="harga-starter" checked>
-        <label for="periode-bulanan">Bulanan</label>
-        <input id="periode-tahunan" type="radio" name="periode-starter" value="tahunan" aria-controls="harga-starter">
-        <label for="periode-tahunan">Tahunan</label>
-      </fieldset>
-      <div class="product-list pricing">
-        <article class="plan" aria-labelledby="judul-gratis">
+      <div class="plan-picker" role="group" aria-label="Pilih paket" hidden>
+        <button type="button" aria-controls="kartu-gratis" aria-pressed="true">Gratis offline</button>
+        <button type="button" aria-controls="kartu-starter" aria-pressed="false">Starter</button>
+      </div>
+      <div class="product-list plan-comparison plan-slider">
+        <article class="plan" id="kartu-gratis" aria-labelledby="judul-gratis">
           <div class="plan-intro">
             <h3 id="judul-gratis">Gratis offline</h3>
-            <p>Untuk pemilik yang mengelola usaha sendiri.</p>
+            <p>Kelola usaha sendiri.</p>
           </div>
           <div class="plan-prices">
             <p class="price">Rp0 <span>selamanya</span></p>
             <p>Cabang Utama</p>
           </div>
+          <div class="plan-action"><a class="button plan-outline" href="./panduan/#gratis">Panduan Gratis</a></div>
           <div class="plan-includes">
-            <h4>Yang kamu dapatkan</h4>
+            <h4>Fitur Gratis offline</h4>
             <ul>
               <li>Satu pemilik pada satu perangkat utama</li>
               <li>Penjualan, pembelian, dan pesanan offline</li>
@@ -159,30 +157,42 @@
               <li>Nota dengan logo usahamu serta footer NotaKita</li>
             </ul>
           </div>
-          <div class="plan-action"><a class="button plan-outline" href="./panduan/#gratis">Cara mulai Gratis</a></div>
         </article>
-        <article class="plan plan-starter" aria-labelledby="judul-starter">
+        <article class="plan plan-starter" id="kartu-starter" aria-labelledby="judul-starter">
           <div class="plan-intro">
             <h3 id="judul-starter">Starter</h3>
-            <p>Untuk usaha dengan staf atau beberapa cabang.</p>
+            <p>Untuk tim atau beberapa cabang.</p>
+            <fieldset class="period-switch" hidden>
+              <legend>Periode harga Starter</legend>
+              <div class="period-options">
+                <input id="periode-bulanan" type="radio" name="periode-starter" value="bulanan" aria-controls="harga-starter" checked>
+                <label for="periode-bulanan">Bulanan</label>
+                <input id="periode-tahunan" type="radio" name="periode-starter" value="tahunan" aria-controls="harga-starter">
+                <label for="periode-tahunan">Tahunan</label>
+              </div>
+            </fieldset>
           </div>
           <div class="plan-prices" id="harga-starter" aria-live="polite" aria-atomic="true">
             <div class="starter-period" data-period="bulanan">
               <p class="price">Rp39.000 <span>/ 30 hari</span></p>
+              <p>Harga per cabang</p>
               <p class="plan-reference">
                 <span>Harga normal <s>Rp50.000</s></span>
                 <span class="plan-discount">Diskon 22%</span>
               </p>
-              <p>Harga per cabang</p>
             </div>
             <div class="starter-period" data-period="tahunan">
               <p class="price">Rp390.000 <span>/ 365 hari</span></p>
+              <p>Harga per cabang</p>
               <p class="plan-reference">
                 <span>Harga normal <s>Rp500.000</s></span>
                 <span class="plan-discount">Diskon 22%</span>
               </p>
-              <p>Harga per cabang</p>
             </div>
+          </div>
+          <div class="plan-action">
+            <!-- portal-link -->
+            <a class="button starter-guide" href="./panduan/#starter">Panduan Starter</a>
           </div>
           <div class="plan-includes">
             <h4>Semua fitur Gratis, ditambah</h4>
@@ -193,10 +203,6 @@
               <li>Sinkronisasi data dan pengelolaan cabang tambahan</li>
               <li>Nota tanpa footer NotaKita</li>
             </ul>
-          </div>
-          <div class="plan-action">
-            <!-- portal-link -->
-            <a class="button starter-guide" href="./panduan/#starter">Lihat panduan Starter</a>
           </div>
         </article>
       </div>
@@ -255,6 +261,31 @@
     </a>
 </div>
 <script>
+  const planSlider = document.querySelector('.plan-slider');
+  const planPicker = document.querySelector('.plan-picker');
+  const planButtons = planPicker.querySelectorAll('button');
+
+  function updatePlanPicker() {
+    const end = planSlider.scrollWidth - planSlider.clientWidth;
+    const activePlan = planSlider.scrollLeft > end / 2 ? 'kartu-starter' : 'kartu-gratis';
+    for (const button of planButtons) {
+      button.setAttribute('aria-pressed', String(button.getAttribute('aria-controls') === activePlan));
+    }
+  }
+
+  for (const button of planButtons) {
+    button.addEventListener('click', () => {
+      const left = button.getAttribute('aria-controls') === 'kartu-starter' ? planSlider.scrollWidth : 0;
+      planSlider.scrollTo({ left });
+    });
+  }
+
+  planSlider.addEventListener('scroll', updatePlanPicker, { passive: true });
+  window.addEventListener('resize', updatePlanPicker);
+  window.addEventListener('pageshow', updatePlanPicker);
+  planPicker.hidden = false;
+  updatePlanPicker();
+
   const periodSwitch = document.querySelector('.period-switch');
   const starterPeriods = document.querySelectorAll('#harga-starter [data-period]');
 
