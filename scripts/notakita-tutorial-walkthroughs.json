@@ -21708,13 +21708,13 @@
   },
   "/tutorial/paket-pembayaran/perpanjang-starter/": {
     "start": {
-      "hp": "Pembayaran Starter untuk umum belum tersedia karena Midtrans Production masih dalam peninjauan. Layar portal memakai tagihan contoh dari simulasi.",
-      "tablet": "Pembayaran Starter untuk umum belum tersedia karena Midtrans Production masih dalam peninjauan. Layar portal memakai tagihan contoh dari simulasi."
+      "hp": "Gunakan akun Pemilik yang sudah terhubung ke usaha di NotaKita. Tangkapan layar memakai data contoh.",
+      "tablet": "Gunakan akun Pemilik yang sudah terhubung ke usaha di NotaKita. Tangkapan layar memakai data contoh."
     },
     "steps": [
       {
         "title": "Masuk ke Portal Pemilik",
-        "text": "Buka Portal Pemilik di browser saat layanan tersedia. Masuk dengan akun Pemilik yang terhubung ke usaha.",
+        "text": "Ketuk **Buka Portal Pemilik** saat tombolnya tersedia. Masuk dengan email dan kata sandi NotaKita atau akun Google yang sudah terhubung.",
         "hp": {
           "image": "starter-portal-ponsel-masuk",
           "alt": "Masuk ke Portal Pemilik di ponsel"

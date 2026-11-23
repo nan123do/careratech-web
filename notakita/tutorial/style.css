@@ -80,7 +80,7 @@
 .tutorial-content h2 { margin-block: 1.6rem .55rem; font-size: 1.3rem; }
 .tutorial-lead { margin-block: 0 1.65rem; color: var(--muted); max-width: 65ch; font-size: 1.1rem; }
 .tutorial-breadcrumb { margin-block: .2rem 1rem; color: var(--muted); font-size: .9rem; }
-.tutorial-content a { color: var(--accent); }
+.tutorial-content a:not(.button) { color: var(--accent); }
 
 .tutorial-index {
   display: grid;

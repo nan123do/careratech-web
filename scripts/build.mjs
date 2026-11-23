@@ -44,12 +44,12 @@ function siteOrigin(site, port) {
   return url.origin;
 }
 
-function portalUrl() {
-  const value = process.env.NOTAKITA_PORTAL_URL;
+function portalUrl(name) {
+  const value = process.env[name];
   if (!production || !value) return null;
-  const url = httpsUrl(value, 'NOTAKITA_PORTAL_URL');
+  const url = httpsUrl(value, name);
   if (!/^\/langganan\/?$/.test(url.pathname)) {
-    throw new Error('NOTAKITA_PORTAL_URL harus mengarah ke /langganan.');
+    throw new Error(`${name} harus mengarah ke /langganan.`);
   }
   return url;
 }
@@ -61,7 +61,12 @@ const origins = Object.fromEntries(
 if (new Set(Object.values(origins)).size !== Object.keys(sites).length) {
   throw new Error('Setiap situs membutuhkan origin yang berbeda.');
 }
-const portal = portalUrl();
+const portal = portalUrl('NOTAKITA_PORTAL_URL');
+const stagingPortal = portalUrl('NOTAKITA_STAGING_PORTAL_URL') ??
+  (production ? new URL('https://api-beta.careratech.id/langganan') : null);
+if (portal && stagingPortal && portal.origin === stagingPortal.origin) {
+  throw new Error('Portal NotaKita Production dan Staging memerlukan origin terpisah.');
+}
 const linkToPortal = portal
   ? `<div class="actions"><a class="button" href="${portal.href}">Kelola langganan</a></div>`
   : '';
@@ -142,7 +147,7 @@ for (const site of Object.keys(sites)) {
     await cp(resolve(catalogAssets, 'google-play-id.webp'), resolve(output, 'assets/google-play-id.webp'));
   }
   if (site === 'notakita') {
-    await buildNotakitaTutorial(output);
+    await buildNotakitaTutorial(output, { portal, stagingPortal });
     await cp(resolve(root, 'careratech/assets/notakita-full.webp'), resolve(output, 'assets/app-icon.webp'));
     await cp(resolve(root, 'careratech/assets/notakita-kelola-cabang.webp'), resolve(output, 'assets/maskot-cabang.webp'));
     await cp(resolve(root, 'notaku/assets/fitur-icons.webp'), resolve(output, 'assets/fitur-icons.webp'));

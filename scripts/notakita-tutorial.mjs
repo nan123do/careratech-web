@@ -4,6 +4,8 @@ import { join } from 'node:path';
 const source = new URL('./notakita-tutorial.txt', import.meta.url);
 const walkthroughSource = new URL('./notakita-tutorial-walkthroughs.json', import.meta.url);
 const tutorial = '/tutorial/';
+const starterPurchasePath = '/tutorial/paket-pembayaran/perpanjang-starter/';
+const starterSandboxPath = '/tutorial/paket-pembayaran/uji-pembelian-starter/';
 const support = 'https://wa.me/6285179936532?text=Halo%20Carera%20Tech%2C%20saya%20ingin%20bertanya%20tentang%20NotaKita.';
 const escape = (value) => value
   .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -202,7 +204,7 @@ function devicePicker() {
   </fieldset>`;
 }
 
-function renderWalkthrough(article, guide) {
+function renderWalkthrough(article, guide, { portal, sandbox = false }) {
   const image = (shot) => shot?.image
     ? renderScreenshot({ name: `${shot.image}.webp`, alt: shot.alt })
     : '';
@@ -216,9 +218,15 @@ function renderWalkthrough(article, guide) {
           ${step.workbook ? `<p><a class="tutorial-download" href="/assets/tutorial/${step.workbook}" download>Unduh contoh Excel (.xlsx)</a></p>` : ''}
           ${image(step[key])}
           ${links(step.links, key)}`;
+  const portalAction = article.path !== starterPurchasePath ? '' : portal
+    ? `<p class="tutorial-related"><a class="button" href="${escape(portal.href)}">Buka Portal Pemilik</a></p>`
+    : sandbox
+      ? '<p class="tutorial-start">Portal Sandbox belum tersedia.</p>'
+      : '<p class="tutorial-start">Portal Pemilik tersedia saat layanan pembayaran dibuka.</p>';
   return `<article class="tutorial-walkthrough">
     <h1>${escape(article.title)}</h1>
     <p class="tutorial-lead">${format(article.summary)}</p>
+    ${portalAction}
     ${Object.entries(devices).map(([key, label]) => `<div class="tutorial-device-panel" data-device="${key}">
       <h2 class="tutorial-device-heading">Langkah di ${label}</h2>
       <p class="tutorial-start">${format(guide.start[key])}</p>
@@ -309,7 +317,7 @@ function renderArticle(article, screenshots) {
   </article>`;
 }
 
-function renderPage({ title, description, breadcrumb, currentPath, sections, content }) {
+function renderPage({ title, description, breadcrumb, currentPath, sections, content, sandbox = false }) {
   return `<!doctype html>
 <html lang="id" class="notakita">
 <head>
@@ -317,6 +325,7 @@ function renderPage({ title, description, breadcrumb, currentPath, sections, con
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0d1516">
   <meta name="description" content="${escape(plain(description))}">
+  ${sandbox ? '<meta name="robots" content="noindex">' : ''}
   <title>${escape(title)}</title>
   <!-- canonical -->
   <link rel="icon" href="/assets/app-icon.webp">
@@ -397,7 +406,7 @@ function renderPage({ title, description, breadcrumb, currentPath, sections, con
 `;
 }
 
-export async function buildNotakitaTutorial(output) {
+export async function buildNotakitaTutorial(output, { portal, stagingPortal } = {}) {
   const { categories, articles, screenshots } = readCatalog(await readFile(source, 'utf8'));
   const { sections, articleNavigation } = tutorialSections(categories);
   const walkthroughs = JSON.parse(await readFile(walkthroughSource, 'utf8'));
@@ -495,9 +504,26 @@ export async function buildNotakitaTutorial(output) {
       description: article.summary,
       breadcrumb: `${link(tutorial, 'Tutorial')} / ${escape(section)} / ${link(topic.path, topic.title)}`,
       content: walkthroughs[article.path]
-        ? renderWalkthrough(article, walkthroughs[article.path])
+        ? renderWalkthrough(article, walkthroughs[article.path], { portal })
         : renderArticle(article, screenshots),
     });
+    if (article.path === starterPurchasePath) {
+      const sandboxArticle = {
+        ...article,
+        title: 'Uji pembelian Starter',
+        summary: 'Gunakan akun Pemilik Staging. Pembayaran uji memakai Midtrans Sandbox.',
+      };
+      pages.push({
+        currentPath: starterSandboxPath,
+        title: `${sandboxArticle.title} · Tutorial NotaKita`,
+        description: sandboxArticle.summary,
+        sandbox: true,
+        content: renderWalkthrough(sandboxArticle, walkthroughs[article.path], {
+          portal: stagingPortal,
+          sandbox: true,
+        }),
+      });
+    }
   }
 
   await Promise.all(pages.map(async (page) => {

@@ -49,7 +49,11 @@ Jalankan ulang setelah mengubah source. Gunakan `node scripts/build.mjs` jika ha
 
 `CARERATECH_URL`, `NOTAKU_URL`, dan `NOTAKITA_URL` tetap diperlukan saat build produksi. Tetapkan `SERVISKITA_URL` dan `RECEIPT_KEEPER_URL` sesuai situs yang hendak dibangun dan ditautkan dari katalog Carera Tech.
 
-Set `NOTAKITA_PORTAL_URL` di proyek NOTAKITA setelah portal produksi di DigitalOcean bisa diakses melalui HTTPS. Gunakan URL lengkap menuju `/langganan`. Website menautkan penghapusan akun ke `/hapus-akun` pada origin server yang sama. Periksa kedua alamat setelah deployment.
+Set `NOTAKITA_PORTAL_URL` di proyek NOTAKITA setelah portal produksi di DigitalOcean bisa diakses melalui HTTPS. Gunakan URL lengkap menuju `/langganan`. Variabel ini juga menampilkan tombol **Buka Portal Pemilik** di tutorial pembelian Starter dan menautkan penghapusan akun ke `/hapus-akun` pada origin server yang sama. Periksa alamat tersebut setelah deployment. Panduan aktivasi yang dibuka dari aplikasi Play tersedia di `/tutorial/paket-pembayaran/aktifkan-starter/` sebagai halaman bantuan tersendiri.
+
+Tutorial `/tutorial/paket-pembayaran/uji-pembelian-starter/` pada build produksi
+website menautkan Portal Pemilik Sandbox di `https://api-beta.careratech.id/langganan`.
+Gunakan `NOTAKITA_STAGING_PORTAL_URL` jika origin Staging perlu diganti.
 
 Di konfigurasi server, set `NOTAKITA_PUBLIC_SITE_ORIGIN` ke origin HTTPS website NotaKita tanpa path. Portal menautkan Ketentuan Pembelian pada halaman Tinjau Tagihan sebelum membuka pembayaran.
 
