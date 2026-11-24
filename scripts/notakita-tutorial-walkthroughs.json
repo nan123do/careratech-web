@@ -20743,6 +20743,73 @@
       }
     ]
   },
+  "/tutorial/cabang-tim-perangkat/ganti-kasir/": {
+    "start": {
+      "hp": "Selesaikan transaksi yang sedang dikerjakan atau simpan sebagai **Tunda** sebelum menyerahkan perangkat.",
+      "tablet": "Selesaikan transaksi yang sedang dikerjakan atau simpan sebagai **Tunda** sebelum menyerahkan perangkat."
+    },
+    "steps": [
+      {
+        "title": "Buka Menu",
+        "onlyOn": "hp",
+        "hp": {
+          "text": "Ketuk **Menu** di navigasi bawah.",
+          "image": "tim-ponsel-ganti-kasir-menu",
+          "alt": "Tombol Menu pada navigasi bawah ponsel"
+        }
+      },
+      {
+        "title": "Buka sidebar jika sedang diciutkan",
+        "onlyOn": "tablet",
+        "tablet": {
+          "text": "Jika sidebar hanya menampilkan ikon, ketuk **Buka menu** di pojok kiri atas.",
+          "image": "tim-tablet-ganti-kasir-buka",
+          "alt": "Ikon Buka menu di pojok kiri atas tablet"
+        }
+      },
+      {
+        "id": "pilih-ganti-kasir",
+        "title": "Ketuk Ganti Kasir",
+        "hp": {
+          "text": "Di kartu identitas kasir aktif, ketuk **Ganti Kasir**.",
+          "image": "tim-ponsel-ganti-kasir-pilih",
+          "alt": "Tombol Ganti Kasir pada kartu identitas di ponsel"
+        },
+        "tablet": {
+          "text": "Lihat bagian bawah sidebar kiri. Ketuk **Ganti Kasir** di bawah nama kasir aktif.",
+          "image": "tim-tablet-ganti-kasir-pilih",
+          "alt": "Tombol Ganti Kasir di bawah nama Ayu pada sidebar tablet"
+        }
+      },
+      {
+        "id": "masuk-kasir-berikutnya",
+        "title": "Masuk dengan PIN pribadi",
+        "text": "Minta kasir berikutnya memasukkan enam angka PIN pribadinya, lalu ketuk **Masuk**.",
+        "hp": {
+          "image": "tim-ponsel-ganti-kasir-pin",
+          "alt": "Tombol Masuk pada layar PIN pribadi di ponsel"
+        },
+        "tablet": {
+          "image": "tim-tablet-ganti-kasir-pin",
+          "alt": "Tombol Masuk pada layar PIN pribadi di tablet"
+        }
+      },
+      {
+        "id": "cek-kasir-aktif",
+        "title": "Periksa nama kasir aktif",
+        "hp": {
+          "text": "Di **Menu**, pastikan kartu identitas menampilkan nama kasir berikutnya. Contoh ini menampilkan **Rani**.",
+          "image": "tim-ponsel-ganti-kasir-hasil",
+          "alt": "Nama Rani pada kartu identitas kasir di ponsel"
+        },
+        "tablet": {
+          "text": "Pastikan nama kasir berikutnya muncul di bawah sidebar. Contoh ini menampilkan **Rani**.",
+          "image": "tim-tablet-ganti-kasir-hasil",
+          "alt": "Nama Rani pada identitas kasir di bagian bawah sidebar tablet"
+        }
+      }
+    ]
+  },
   "/tutorial/cabang-tim-perangkat/tambah-loket/": {
     "start": {
       "hp": "Gunakan akun Pemilik dan siapkan nama yang mudah dibedakan. Contoh membuat **Kasir Teras**.",
@@ -21714,14 +21781,14 @@
     "steps": [
       {
         "title": "Masuk ke Portal Pemilik",
-        "text": "Ketuk **Buka Portal Pemilik** saat tombolnya tersedia. Masuk dengan email dan kata sandi NotaKita atau akun Google yang sudah terhubung.",
+        "text": "Ketuk **Buka Portal Pemilik** saat tombolnya tersedia. Pilih **Lanjutkan dengan Google** jika akun Google sudah terhubung. Kamu juga bisa mengisi email dan kata sandi NotaKita, lalu ketuk **Masuk**.",
         "hp": {
-          "image": "starter-portal-ponsel-masuk",
-          "alt": "Masuk ke Portal Pemilik di ponsel"
+          "image": "starter-portal-ponsel-login-google",
+          "alt": "Pilihan masuk dengan Google atau email pada Portal Pemilik di ponsel"
         },
         "tablet": {
-          "image": "starter-portal-tablet-masuk",
-          "alt": "Masuk ke Portal Pemilik di tablet"
+          "image": "starter-portal-tablet-login-google",
+          "alt": "Pilihan masuk dengan Google atau email pada Portal Pemilik di tablet"
         }
       },
       {
@@ -21935,12 +22002,12 @@
         "title": "Masuk ke Portal Pemilik",
         "text": "Buka Portal Pemilik di browser saat layanan tersedia. Masuk dengan akun Pemilik yang terhubung ke usaha.",
         "hp": {
-          "image": "starter-portal-ponsel-masuk",
-          "alt": "Masuk ke Portal Pemilik di ponsel"
+          "image": "starter-portal-ponsel-login-google",
+          "alt": "Pilihan masuk dengan Google atau email pada Portal Pemilik di ponsel"
         },
         "tablet": {
-          "image": "starter-portal-tablet-masuk",
-          "alt": "Masuk ke Portal Pemilik di tablet"
+          "image": "starter-portal-tablet-login-google",
+          "alt": "Pilihan masuk dengan Google atau email pada Portal Pemilik di tablet"
         }
       },
       {

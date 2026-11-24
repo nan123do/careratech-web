@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -317,7 +318,7 @@ function renderArticle(article, screenshots) {
   </article>`;
 }
 
-function renderPage({ title, description, breadcrumb, currentPath, sections, content, sandbox = false }) {
+function renderPage({ title, description, breadcrumb, currentPath, sections, content, styleHref, sandbox = false }) {
   return `<!doctype html>
 <html lang="id" class="notakita">
 <head>
@@ -331,7 +332,7 @@ function renderPage({ title, description, breadcrumb, currentPath, sections, con
   <link rel="icon" href="/assets/app-icon.webp">
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/product-site.css">
-  <link rel="stylesheet" href="/tutorial/style.css">
+  <link rel="stylesheet" href="${styleHref}">
   <script type="module" src="/tutorial/tutorial.js"></script>
 </head>
 <body>
@@ -407,6 +408,9 @@ function renderPage({ title, description, breadcrumb, currentPath, sections, con
 }
 
 export async function buildNotakitaTutorial(output, { portal, stagingPortal } = {}) {
+  const style = await readFile(join(output, 'tutorial', 'style.css'));
+  const revision = createHash('sha256').update(style).digest('hex').slice(0, 12);
+  const styleHref = `/tutorial/style.css?v=${revision}`;
   const { categories, articles, screenshots } = readCatalog(await readFile(source, 'utf8'));
   const { sections, articleNavigation } = tutorialSections(categories);
   const walkthroughs = JSON.parse(await readFile(walkthroughSource, 'utf8'));
@@ -529,6 +533,6 @@ export async function buildNotakitaTutorial(output, { portal, stagingPortal } = 
   await Promise.all(pages.map(async (page) => {
     const folder = join(output, page.currentPath);
     await mkdir(folder, { recursive: true });
-    await writeFile(join(folder, 'index.html'), renderPage({ ...page, sections }));
+    await writeFile(join(folder, 'index.html'), renderPage({ ...page, sections, styleHref }));
   }));
 }
